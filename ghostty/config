@@ -1,0 +1,35 @@
+font-family = JetBrainsMonoNL Nerd Font 
+font-size = 11
+shell-integration-features = false
+
+# Shaders configuration
+# custom-shader = shaders/bloom025.glsl
+
+# Mouse configuration
+mouse-hide-while-typing = true
+
+# Window configuration
+window-decoration = auto
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+window-save-state = always
+window-theme = ghostty
+title = " "
+
+auto-update = check
+copy-on-select = clipboard
+
+theme = catppuccin-mocha
+background = #000000
+background-opacity = 0.85
+background-blur = 20
+
+shell-integration = fish
+
+# Cursor Configuration
+cursor-style = underline
+# mouse-scroll-multiplier = 1.5
+
+# Duration (in seconds) of the quick terminal enter and exit animation
+# quick-terminal-animation-duration = 0.08
