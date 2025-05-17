@@ -1,0 +1,27 @@
+# Font Configuration
+font_family     JetBrainsMono Nerd Font 
+font_size       12
+
+# Cursor Configuration
+cursor_shape    underline
+cursor_shape_unfocused     hollow
+
+# Mouse Configuration
+mouse_hide_wait     5.0
+
+# Color Scheme
+background_opacity     0.85
+background_blur        20
+
+# Performance Tuning
+sync_to_monitor     yes
+
+# Terminal Bell
+enable_audio_bell     yes
+
+# Tab Bar
+active_tab_title_template     none
+tab_bar_background            none
+
+# Titlebar
+wayland_titlebar_color     system
