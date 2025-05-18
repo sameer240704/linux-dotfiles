@@ -63,7 +63,6 @@ return {
 
             -- Module mappings. Use `''` (empty string) to disable one.
             -- INFO:
-            -- saiw surround with no whitespace
             -- saw surround with whitespace
             mappings = {
                 add = 'sa',            -- Add surrounding in Normal and Visual modes

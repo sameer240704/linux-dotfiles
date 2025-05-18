@@ -6,13 +6,14 @@ return {
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
 		},
         config = function ()
            local noice = require("noice")
 
             noice.setup({
 				cmdline = {
-					enabled = false,
+					enabled = false, -- Currently the cmdline is coming at the center and the suggestions are coming at the bottom
 					view = "cmdline_popup",
 					format = {
 						cmdline = { pattern = "", icon = "󱐌 :", lang = "vim" },
@@ -28,12 +29,34 @@ return {
 						input = { view = "cmdline_input", icon = " 󰥻 :" }, -- Used by input()
 					},
 				},
+                notify = {
+                    enabled = true,
+                    view = "notify"
+                },
                 views = {
+                    cmdline_popup = {
+                        position = {
+                            row = 10,
+                            col = "50%",
+                        },
+                        size = {
+                            width = 60,
+                            height = "auto",
+                        },
+                    },
                     popupmenu = {
                         relative = "editor",
                         position = {
                             row = 8,
                             col = "50%",
+                        },
+                        size = {
+                            width = 60,
+                            height = 10,
+                        },
+                        border = {
+                            style = "rounded",
+                            padding = { 0, 1 },
                         },
                         win_options = {
                             winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
@@ -81,7 +104,12 @@ return {
                     }
                 },
 				messages = {
-					enabled = false,
+					enabled = true,
+                    view = "notify",
+                    view_error = "notify",
+                    view_warn = "notify",
+                    view_history = "messages",
+                    view_search = "virtualtext"
 				},
                 health = {
                     checker = true,
