@@ -1,9 +1,3 @@
----
-id: Dotfiles README
-aliases: []
-tags: []
----
-
 # Contents
 
 <!-- toc -->
@@ -17,4 +11,4 @@ tags: []
 - This is the dotfiles repo where I keep my system configuration.
 - My daily driver OS is Arch Linux (Endeavour OS) and my editor of choice is Neovim.
 - Sneak peek of my setup below:
-![[assets/setup.png]]
+![My Neovim Setup](assets/setup.png)
