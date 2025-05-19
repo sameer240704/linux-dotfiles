@@ -1,0 +1,75 @@
+# Main background (keep as is for dark terminal synergy)
+theme[main_bg]="#0D1116"
+
+# Main text - softened white for better dark theme comfort
+theme[main_fg]="#E6EDF3"
+
+# Title color - subtle cyan for hierarchy without harshness
+theme[title]="#7EE7F8"
+
+# Highlight - maintain your signature green but refined
+theme[hi_fg]="#2EF4A2"
+
+# Selected item - purple adjusted for better contrast
+theme[selected_bg]="#8A6AFF"
+theme[selected_fg]="#FFFFFF"
+
+# Inactive text - desaturated blue-gray for better differentiation
+theme[inactive_fg]="#798BA4"
+
+# Graph text - soft white with blue tint
+theme[graph_text]="#D4F1FD"
+
+# Meter background - darker base for better contrast
+theme[meter_bg]="#0A0E12"
+
+# Process misc - muted magenta to complement palette
+theme[proc_misc]="#D18AFF"
+
+# Box outlines - unified color scheme
+theme[cpu_box]="#8A6AFF"       # Purple
+theme[mem_box]="#2EF4A2"       # Green
+theme[net_box]="#4AC8F5"       # Cyan
+theme[proc_box]="#A3E635"      # Lime
+theme[div_line]="#1A222D"      # Darker separator
+
+# Temperature gradient (purple to blue)
+theme[temp_start]="#B36AFF"
+theme[temp_mid]="#7E8AFF"
+theme[temp_end]="#4AC8F5"
+
+# CPU gradient (cyan to green)
+theme[cpu_start]="#4AC8F5"
+theme[cpu_mid]="#2EF4A2"
+theme[cpu_end]="#A3E635"
+
+# Memory meters (cohesive progression)
+theme[free_start]="#2A1D42"
+theme[free_mid]="#4A3B66"
+theme[free_end]="#6A5990"
+
+theme[cached_start]="#1D3A42"
+theme[cached_mid]="#2F5D6A"
+theme[cached_end]="#418092"
+
+theme[available_start]="#2D2A42"
+theme[available_mid]="#4D4A66"
+theme[available_end]="#6D6A90"
+
+theme[used_start]="#1A4232"
+theme[used_mid]="#2A6A52"
+theme[used_end]="#3A9272"
+
+# Network gradients (complementary colors)
+theme[download_start]="#4AC8F5"
+theme[download_mid]="#8A6AFF"
+theme[download_end]="#D18AFF"
+
+theme[upload_start]="#2EF4A2"
+theme[upload_mid]="#A3E635"
+theme[upload_end]="#FFD86A"
+
+# Process gradients (smooth transitions)
+theme[process_start]="#4AC8F5"
+theme[process_mid]="#8A6AFF"
+theme[process_end]="#D18AFF"
