@@ -16,6 +16,9 @@ return {
 		local color5_bg = "#7aa2f7"
 		local color6_bg = "#c0caf5"
 		local color_fg = "#1F2335"
+        local color_unchecked = "#7aa2f7"
+        local color_checked = "#9ece6a"
+
 		-- -- Heading background
 		vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s gui=bold]], color_fg, color1_bg))
 		vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s gui=bold]], color_fg, color2_bg))
@@ -23,6 +26,10 @@ return {
 		vim.cmd(string.format([[highlight Headline4Bg guifg=%s guibg=%s gui=bold]], color_fg, color4_bg))
 		vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s gui=bold]], color_fg, color5_bg))
 		vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s gui=bold]], color_fg, color6_bg))
+
+        -- Checkbox highlighting
+        vim.cmd(string.format([[highlight RenderMarkdownUnchecked guifg=%s]], color_unchecked))
+        vim.cmd(string.format([[highlight RenderMarkdownChecked guifg=%s gui=bold]], color_checked))
 
 		-- Heading fg
 		-- vim.cmd(string.format([[highlight Headline1Fg guifg=%s gui=bold]], colors.color1_bg))
@@ -62,29 +69,31 @@ return {
 			-- Turn on / off list bullet rendering
 			enabled = true,
 		},
-		-- checkbox = {
+		checkbox = {
 		--     -- Turn on / off checkbox state rendering
-		--     enabled = true,
+		    enabled = true,
 		--     -- Determines how icons fill the available space:
 		--     --  inline:  underlying text is concealed resulting in a left aligned icon
 		--     --  overlay: result is left padded with spaces to hide any additional text
-		--     position = "inline",
-		--     unchecked = {
-		--         -- Replaces '[ ]' of 'task_list_marker_unchecked'
-		--         icon = "   󰄱 ",
-		--         -- Highlight for the unchecked icon
-		--         highlight = "RenderMarkdownUnchecked",
-		--         -- Highlight for item associated with unchecked checkbox
-		--         scope_highlight = nil,
-		--     },
-		--     checked = {
-		--         -- Replaces '[x]' of 'task_list_marker_checked'
-		--         icon = "   󰱒 ",
-		--         -- Highlight for the checked icon
-		--         highlight = "RenderMarkdownChecked",
-		--         -- Highlight for item associated with checked checkbox
-		--         scope_highlight = nil,
-		--     },
-		-- },
+		    position = "overlay",
+		    unchecked = {
+		--      -- Replaces '[ ]' of 'task_list_marker_unchecked'
+		        -- icon = "󰝦",
+                 icon = "   󰄱 ",
+		--      -- Highlight for the unchecked icon
+		        highlight = "RenderMarkdownUnchecked",
+		--      -- Highlight for item associated with unchecked checkbox
+		        -- scope_highlight = nil,
+		    },
+		    checked = {
+		--      -- Replaces '[x]' of 'task_list_marker_checked'
+		        -- icon = "󰸞",
+                icon = "   󰱒 ",
+		--      -- Highlight for the checked icon
+    		    highlight = "RenderMarkdownChecked",
+		--      -- Highlight for item associated with checked checkbox
+	    	    -- scope_highlight = nil,
+		    },
+		},
 	},
 }

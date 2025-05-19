@@ -18,6 +18,8 @@ return {
 			clickable = true,
 			exclude_ft = {},
 			exclude_name = {},
+            hide = {extensions = true, inactive = true},
+            highlight_visible = true,
 			icons = {
 				filetype = {
 					enabled = true,
@@ -29,6 +31,12 @@ return {
 				pinned = { button = "車" },
 				button = "",
 				modified = { button = "●" },
+                gitsigns = {
+                    added = {enabled = true, icon = '+'},
+                    changed = {enabled = true, icon = '~'},
+                    deleted = {enabled = true, icon = '-'},
+                },
+
 			},
 			maximum_padding = 1,
 			maximum_length = 30,

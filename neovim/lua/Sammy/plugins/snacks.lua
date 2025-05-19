@@ -230,7 +230,7 @@ return {
 
 			-- Other Utils
 			{
-				"<leader>th",
+				"<leader>tcs",
 				function()
 					require("snacks").picker.colorschemes({ layout = "ivy" })
 				end,
