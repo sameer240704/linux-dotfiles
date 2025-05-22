@@ -3,6 +3,10 @@ vim.cmd("let g:netrw_banner = 0")
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- Highlight the line number of the cursor
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
