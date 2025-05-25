@@ -7,7 +7,9 @@ $git_status\
 $nodejs\
 $python\
 $rust\
+$cpp\
 $golang\
+$docker_context\
 $lua\
 $java\
 $php\
@@ -40,16 +42,25 @@ truncation_length = 2
 truncate_to_repo = true
 format = " [$path]($style)[$read_only]($read_only_style)"
 read_only = "  "
+home_symbol = " "
+
+[sudo]
+format = "[$symbol]($style)"
+style = "bold italic bright-purple"
+symbol = " ┈"
+disabled = false
 
 [git_branch]
 symbol = "󰘬 "
 style = "bold bright-green"
 format = " via [$symbol$branch]($style)"
+truncation_symbol = "⋯"
+truncation_length = 14
 
 [git_status]
 style = "bold bright-red"
-format = "[$all_status$ahead_behind]($style)"
-conflicted = "⚡${count}"
+format = " [$all_status$ahead_behind]($style)"
+conflicted = "[◪]${count}"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
@@ -59,19 +70,21 @@ stashed = "$${count}"
 modified = "!${count}"
 staged = "+${count}"
 renamed = "»${count}"
-deleted = "✘${count}"
+deleted = "${count}"
 
 [nodejs]
 symbol = " "
 style = "bold bright-green"
 format = " via [$symbol $version]($style)"
 detect_extensions = ["js", "mjs", "cjs", "ts", "tsx", "jsx"]
-detect_files = ["package.json", ".nvmrc"]
+detect_files = ["package.json", ".nvmrc", "yarn.lock"]
+detect_folders = ["node_modules"]
 
 [python]
 symbol = " "
 style = "bold bright-blue"
 format = " via [$symbol v$pyversion( $virtualenv)]($style)"
+version_format = "${raw}"
 detect_extensions = ["py"]
 detect_files = [".python-version", "Pipfile", "requirements.txt", "pyproject.toml"]
 
@@ -96,6 +109,10 @@ format = " via [$symbol v$version]($style)"
 detect_extensions = ["lua"]
 detect_files = [".lua-version"]
 
+[docker_context]
+symbol = " "
+format = " docker [$symbol$context]($style)"
+
 [java]
 symbol = " "
 style = "bold bright-red"
@@ -108,6 +125,10 @@ style = "bold bright-magenta"
 format = " via [$symbol v$version]($style)"
 detect_extensions = ["php"]
 detect_files = ["composer.json"]
+
+[cpp]
+symbol = " "
+format = " [$symbol($version(-$name))]($style)"
 
 [ruby]
 symbol = " "
@@ -139,6 +160,7 @@ detect_extensions = ["swift"]
 symbol = " "
 style = "bold bright-yellow"
 format = " via [$symbol $version]($style)"
+version_format = "${raw}"
 
 [cmd_duration]
 min_time = 1000
