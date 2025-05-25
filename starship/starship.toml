@@ -1,136 +1,182 @@
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
-$git_commit_hash\
-$fill\
-$python\
 $nodejs\
-$golang\
+$python\
 $rust\
-$docker_context\
-$kubernetes\
-$terraform\
-$aws\
-$battery\
+$golang\
+$lua\
+$java\
+$php\
+$ruby\
+$dart\
+$kotlin\
+$swift\
+$package\
+$cmd_duration\
 $time\
 $line_break\
 $character"""
 
-add_newline = true
-palette = 'nord'
+[username]
+style_user = "bold bright-cyan"
+style_root = "bold bright-red"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = " on [$hostname]($style)"
+style = "bold bright-purple"
+disabled = false
 
 [directory]
-style = 'bold fg:dark_blue'
-format = '[ $path ]($style)'
-truncation_length = 5
-truncation_symbol = '…/'
+style = "bold bright-yellow"
+truncation_length = 2
 truncate_to_repo = true
-
-[directory.substitutions]
-'Documents' = '󰈙 '
-'Downloads' = ' '
-'Music' = ' '
-'Pictures' = ' '
-'.git' = '󰊢 '
+format = " [$path]($style)[$read_only]($read_only_style)"
+read_only = "  "
 
 [git_branch]
-style = 'fg:green'
-symbol = ' '
-format = '[on](white) [$symbol$branch](bold fg:green)'
+symbol = "󰘬 "
+style = "bold bright-green"
+format = " via [$symbol$branch]($style)"
 
 [git_status]
-style = 'fg:green'
-conflicted = '⚔️ '
-ahead = '⇡${count} '
-behind = '⇣${count} '
-diverged = '⇕⇡${ahead_count}⇣${behind_count} '
-untracked = ' ${count} '
-stashed = '󰆼 ${count} '
-modified = ' ${count} '
-staged = ' ${count} '
-renamed = '󰑕 ${count} '
-deleted = ' ${count} '
-format = '[(${all_status}${ahead_behind})]($style) '
-
-[git_commit_hash]
-format = '[➦](bold fg:dark_blue) [\($hash\)](bold fg:purple)'
-only_detached = false
-tag_disabled = false
-tag_symbol = ' '
-
-[fill]
-symbol = ' '
-
-[python]
-style = 'bold #88C0D0'
-symbol = ' '
-format = '[${symbol}${pyenv_prefix}(${version})( \\($virtualenv\\))]($style)'
+style = "bold bright-red"
+format = "[$all_status$ahead_behind]($style)"
+conflicted = "⚡${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
 
 [nodejs]
-style = 'bold #81A1C1'
-symbol = ' '
+symbol = " "
+style = "bold bright-green"
+format = " via [$symbol $version]($style)"
+detect_extensions = ["js", "mjs", "cjs", "ts", "tsx", "jsx"]
+detect_files = ["package.json", ".nvmrc"]
 
-[golang]
-style = 'bold #5E81AC'
-symbol = ' '
+[python]
+symbol = " "
+style = "bold bright-blue"
+format = " via [$symbol v$pyversion( $virtualenv)]($style)"
+detect_extensions = ["py"]
+detect_files = [".python-version", "Pipfile", "requirements.txt", "pyproject.toml"]
 
 [rust]
-style = 'bold #D08770'
-symbol = ' '
+symbol = " "
+style = "bold bright-red"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["rs"]
+detect_files = ["Cargo.toml"]
 
-[docker_context]
-symbol = ' '
-style = 'bold #06969A'
-format = '[$symbol $context]($style)'
+[golang]
+symbol = "󰟓 "
+style = "bold bright-cyan"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["go"]
+detect_files = ["go.mod", "go.sum"]
 
-[kubernetes]
-symbol = '󱃾 '
-style = 'bold #5E81AC'
-format = '[$symbol($cluster)]($style)'
+[lua]
+symbol = " "
+style = "bold bright-blue"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["lua"]
+detect_files = [".lua-version"]
 
-[terraform]
-symbol = ' '
-style = 'bold #5E81AC'
-format = '[$symbol$workspace]($style)'
+[java]
+symbol = " "
+style = "bold bright-red"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["java", "class", "jar", "gradle"]
 
-[aws]
-symbol = ' '
-style = 'bold #EBCB8B'
-format = '[$symbol($profile)( \\($region\\))]($style)'
+[php]
+symbol = " "
+style = "bold bright-magenta"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["php"]
+detect_files = ["composer.json"]
 
-[battery]
-full_symbol = '󰁹 '
-charging_symbol = '󰂄 '
-discharging_symbol = '󰂃 '
-style = 'bold #A3BE8C'
-format = '[${symbol}${percentage}]($style) '
+[ruby]
+symbol = " "
+style = "bold bright-red"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["rb"]
+detect_files = ["Gemfile", ".ruby-version"]
 
-[time]
-disabled = false
-format = '🕒 [\[ $time \]]($style)'
-time_format = '%H:%M'
-style = 'bold fg:gray'
+[dart]
+symbol = " "
+style = "bold bright-blue"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["dart"]
+detect_files = ["pubspec.yaml"]
+
+[kotlin]
+symbol = " "
+style = "bold bright-magenta"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["kt", "kts"]
+
+[swift]
+symbol = " "
+style = "bold bright-red"
+format = " via [$symbol v$version]($style)"
+detect_extensions = ["swift"]
+
+[package]
+symbol = " "
+style = "bold bright-yellow"
+format = " via [$symbol $version]($style)"
 
 [cmd_duration]
 min_time = 1000
-style = 'bold fg:gray'
-format = '[⏱ $duration]($style) '
+style = "bold bright-yellow"
+format = " took [$duration]($style)"
+
+[time]
+disabled = false
+style = "bold bright-white"
+format = " at [$time]($style)"
+time_format = "%H:%M:%S"
 
 [character]
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
-vicmd_symbol = '[❮](bold fg:yellow)'
+success_symbol = "[➜](bold bright-green)"
+error_symbol = "[➜](bold bright-red)"
+vimcmd_symbol = "[←](bold bright-green)"
 
-[palettes.nord]
-dark_blue = '#5E81AC'
-blue = '#81A1C1'
-teal = '#88C0D0'
-red = '#BF616A'
-orange = '#D08770'
-green = '#A3BE8C'
-yellow = '#EBCB8B'
-purple = '#B48EAD'
-gray = '#4C566A'
-black = '#2E3440'
-white = '#D8DEE9'
+# Add some cool separators and styling
+[fill]
+symbol = " "
+
+# Make it pop with these additional modules
+[memory_usage]
+disabled = false
+threshold = 70
+style = "bold dimmed bright-red"
+format = " via 󰍛 [$ram]($style)"
+
+[battery]
+full_symbol = "󱊣"
+charging_symbol = " "
+discharging_symbol = "󱊡"
+format = " [$symbol$percentage]($style)"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
