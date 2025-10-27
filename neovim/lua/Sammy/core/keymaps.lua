@@ -3,10 +3,24 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Home and End Lines key mappings
+-- Normal Mode
+vim.keymap.set("n", "<Home>", "0", opts) -- Go to beginning of line
+vim.keymap.set("n", "<End>", "$", opts)  -- Go to end of line
+
+-- Insert mode
+vim.keymap.set("i", "<Find>", "<C-o>0", { noremap = true })
+vim.keymap.set("i", "<Select>", "<C-o>$", { noremap = true })
+
+-- Visual mode
+vim.keymap.set("v", "<Home>", "0", opts)
+vim.keymap.set("v", "<End>", "$", opts)
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move lines up" })
 
-vim.keymap.set("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Joins below line with the current keeping the cursor in place" })
+vim.keymap.set("n", "J", "mzJ`z",
+    { noremap = true, silent = true, desc = "Joins below line with the current keeping the cursor in place" })
 
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
@@ -38,7 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Diagnostics Auto-Command
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
     group = vim.api.nvim_create_augroup("float_diagnostics", { clear = true }),
-    callback = function ()
+    callback = function()
         vim.diagnostic.open_float(nil, {
             focus = false,
             border = "rounded"
@@ -47,32 +61,32 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 })
 
 -- Tab Stuff
-vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")  -- open new tab
-vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>")  -- close current tab
+vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   -- open new tab
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>") -- close current tab
 -- vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>")  -- go to next tab
 -- vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>")  -- go to prev tab
 -- vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>")  -- open current tab in new tab
 
 -- Tabline Keymaps
 -- Move to previous/next
-vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+-- vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
+-- vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
 
 -- Re-order to previous/next
-vim.keymap.set('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
-vim.keymap.set('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
+-- vim.keymap.set('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
+-- vim.keymap.set('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
 
 -- Goto buffer in position...
-vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-vim.keymap.set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-vim.keymap.set('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-vim.keymap.set('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-vim.keymap.set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-vim.keymap.set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-vim.keymap.set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-vim.keymap.set('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+-- vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
+-- vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
+-- vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
+-- vim.keymap.set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
+-- vim.keymap.set('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
+-- vim.keymap.set('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
+-- vim.keymap.set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
+-- vim.keymap.set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
+-- vim.keymap.set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
+-- vim.keymap.set('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 
 -- Pin/unpin buffer
 vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
@@ -80,16 +94,30 @@ vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 vim.keymap.set('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 
--- Splitting screen 
--- vim.keymap.set('n', '<leader>th', ':split | tabnew<CR>', { desc = 'Horizontal split in new tab' })
--- vim.keymap.set('n', '<leader>tv', ':vsplit | tabnew<CR>', { desc = 'Vertical split in new tab' })
+-- Splitting screen
+vim.keymap.set('n', '<A-s>s', ':split<CR>', { desc = 'Horizontal split in new tab' })
+vim.keymap.set('n', '<A-s>v', ':vsplit<CR>', { desc = 'Vertical split in new tab' })
+
+-- Maximizing / Minimizing split screens
+vim.keymap.set('n', '<A-m>', ':wincmd _ | wincmd |<CR>', { desc = 'Maximize current split' })
+vim.keymap.set('n', '<A-r>', ':wincmd =<CR>', { desc = 'Restore equal split sizes' })
+
+-- Resize split screens with arrow keys
+vim.keymap.set('n', '<A-Up>', ':resize +5<CR>', { desc = 'Increase height' })
+vim.keymap.set('n', '<A-Down>', ':resize -5<CR>', { desc = 'Decrease height' })
+vim.keymap.set('n', '<A-Left>', ':vertical resize -5<CR>', { desc = 'Decrease width' })
+vim.keymap.set('n', '<A-Right>', ':vertical resize +5<CR>', { desc = 'Increase width' })
+
+-- Jump 30 lines up and down
+vim.keymap.set("n", "<A-[>", "30j", { noremap = true, silent = true, desc = "Jump 30 lines down" })
+vim.keymap.set("n", "<A-]>", "30k", { noremap = true, silent = true, desc = "Jump 30 lines up" })
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
-    local filePath = vim.fn.expand("%:~")  -- Gets the file path relative to the home directory
-    vim.fn.setreg("+", filePath)  -- Copy the filepath to the clipboard register
+    local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
+    vim.fn.setreg("+", filePath)          -- Copy the filepath to the clipboard register
     print("File path copied to the clipboard: " .. filePath)
-end, {desc = "Copy file path to clipboard" })
+end, { desc = "Copy file path to clipboard" })
 
 -- Toggle LSP Diagnostics Visibilty
 local isLspDiagnosticsVisible = true

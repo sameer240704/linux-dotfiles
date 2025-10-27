@@ -12,7 +12,7 @@ return {
                 user_default_options = {
                     tailwind = true,
                 },
-                filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte" },
+                filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" },
             })
 
             tailwindcolorizer.setup({
@@ -24,7 +24,6 @@ return {
                     vim.cmd("ColorizerAttachToBuffer")
                 end,
             })
-
         end,
     },
 }

@@ -21,4 +21,3 @@
 ## Follow me on social media
 - [GitHub](https://github.com/sameer240704)
 - [LinkedIn](https://www.linkedin.com/in/sameergupta24/)
-- [Twitter](https://x.com/SameerGupt348)

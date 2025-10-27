@@ -36,7 +36,7 @@ vim.opt.splitbelow = true
 
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = ""
 
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.hlsearch = true
@@ -46,13 +46,23 @@ vim.g.editorconfig = true
 
 -- Obsidian
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.linebreak = true
-		vim.g.markdown_recommended_style = 0
-		vim.opt_local.conceallevel = 2
-	end,
+    pattern = { "markdown" },
+    callback = function()
+        -- vim.opt_local.wrap = true
+        -- vim.opt_local.linebreak = true
+        vim.g.markdown_recommended_style = 0
+        vim.opt_local.conceallevel = 2
+    end,
+})
+
+-- Italic Layout for elements
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        local comment_hl = vim.api.nvim_get_hl(0, { name = "Comment" })
+
+        vim.api.nvim_set_hl(0, "Comment", { fg = "#7C8898", italic = true })
+    end,
 })
 
 -- Update on Daily To-Do List

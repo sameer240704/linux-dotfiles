@@ -12,8 +12,12 @@ return {
                 highlight = {
                     enable = true,
                 },
+                sync_install = true,
                 -- enable indentation
                 indent = { enable = true },
+                ignore_install = {},
+                auto_install = true,
+                modules = {},
 
                 -- ensure these languages parsers are installed
                 ensure_installed = {
@@ -27,10 +31,8 @@ return {
                     "css",
                     "python",
                     "http",
-                    "prisma",
                     "markdown",
                     "markdown_inline",
-                    "svelte",
                     "graphql",
                     "bash",
                     "lua",
@@ -39,10 +41,6 @@ return {
                     "gitignore",
                     "query",
                     "vimdoc",
-                    "c",
-                    "cpp",
-                    "java",
-                    "rust",
                 },
                 incremental_selection = {
                     enable = true,
@@ -60,7 +58,7 @@ return {
     -- NOTE: js,ts,jsx,tsx Auto Close Tags
     {
         "windwp/nvim-ts-autotag",
-        ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
+        ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact" },
         config = function()
             -- Independent nvim-ts-autotag setup
             require("nvim-ts-autotag").setup({
@@ -71,7 +69,7 @@ return {
                 },
                 per_filetype = {
                     ["html"] = {
-                        enable_close = true, -- Disable auto-closing for HTML
+                        enable_close = true,
                     },
                     ["typescriptreact"] = {
                         enable_close = true, -- Explicitly enable auto-closing (optional, defaults to `true`)
