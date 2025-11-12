@@ -19,6 +19,12 @@ status is-interactive; and pyenv init - | source
 set -x __nv_prime_render_offload 1
 set -x __glx_vendor_library_name nvidia
 
+# ssh agent - only start if not already running
+if not set -q ssh_auth_sock
+    eval (ssh-agent -c) > /dev/null
+    ssh-add ~/.ssh/id_ed25519 2>/dev/null
+end
+
 # aliases
 alias mountsecret="gocryptfs ~/encrypted ~/decrypted"
 alias unmountsecret="fusermount -u ~/decrypted/"
@@ -30,13 +36,14 @@ alias gp="git push"
 alias cls="clear"
 alias gst="git status"
 alias nrd="npm run dev"
+alias nrb="npm run build"
 alias yd="yarn dev"
 alias nilpd="npm install --legacy-peer-deps"
 alias pyrun="uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload --reload-exclude logs"
 alias synth="cdk synth"
 alias deploy="cdk deploy"
-alias logger="~/desktop/internships/arbiter/aws/cwlogs" # Logger for Internship
-alias lzg="lazygit"
+alias logger="~/desktop/internships/arbiter/aws/cwlogs"
+alias lg="lazygit"
 alias vim="nvim ."
 
 # fish greeting
