@@ -1,0 +1,82 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+    {
+        "context": "Workspace",
+        "bindings": {
+            "shift shift": "file_finder::Toggle"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "j k": "vim::NormalBefore"
+        }
+    },
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "g s": "outline::Toggle",
+            "g i": "editor::ToggleCodeActions",
+            "g d": "editor::OpenExcerpts",
+            "g c": ["editor::ToggleComments", { "advance_downwards": false }]
+        }
+    },
+    {
+        "context": "Editor && VimControl && !VimWatching && !menu",
+        "bindings": {
+            "g n": "vim::SelectNext",
+            "g p": "vim::SelectPrevious",
+            "g a": "editor::SelectAllMatches",
+            "g shift-a": "editor::FindAllReferences",
+            "g f": "project_symbols::Toggle",
+            "space p e": "diagnostics::Deploy"
+        }
+    },
+    {
+        "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+        "bindings": {
+            "m alt-p": "markdown::OpenPreview",
+            "m alt-s": "markdown::OpenPreviewToTheSide",
+
+            // git stuff
+            "space g h d": "editor::ToggleSelectedDiffHunks",
+            "space g h r": "git::Restore"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !VimEditing && !menu",
+        "bindings": {
+            "space e h": "editor::Hover",
+
+            // Buffers
+            "s r": "pane::SplitRight",
+            "s d": "pane::SplitDown",
+            "alt-s r": "workspace::ActivatePaneRight",
+            "alt-s l": "workspace::ActivatePaneLeft",
+            "alt-s u": "workspace::ActivatePaneUp",
+            "alt-s d": "workspace::ActivatePaneDown",
+            "space h": "pane::ActivatePreviousItem",
+            "space l": "pane::ActivateNextItem",
+            "space c": "pane::CloseActiveItem",
+            "space p f": "file_finder::Toggle",
+            "space p s": "pane::DeploySearch",
+            "space f": "editor::Format",
+            "space m": "tab_switcher::Toggle",
+            "ctrl-w l": "workspace::ToggleRightDock",
+            "ctrl-w h": "workspace::ToggleLeftDock",
+            "ctrl-w j": "workspace::ToggleBottomDock"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !VimEditing && !menu",
+        "bindings": {
+            "ctrl-a": "editor::SelectAll"
+        }
+    }
+]
